@@ -14,7 +14,7 @@ todo...
 - Creazione automatica dei registri obbligatori di legge
 - interfacciamento con i programmi di fatturazione (gestionale open?)
 - Gestione della grafica in sovraimpressione, ovvero i loghi (decklink?)
-
+- interfaciamento con EPG (electronic program guide) della AVALPA (cinecast)
 
 [ENGLISH] --- edit request
 This is the very initial core of a smart and simple MAM (Media Asset Management) application (very web oriented) to help management an playout of complex television archtecture.
