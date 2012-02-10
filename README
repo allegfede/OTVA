@@ -1,6 +1,22 @@
 OTVA aka Open TV Architecture
-
-v.0000000 + 1 che c'e'
-
 Antonello Amici e Federico Allegretti
 
+[ITALIAN]
+OTVA nasce come semplice e veloce applicazione distribuita per la gestione e la messa in onda di decine di canali televisivi con pochi e rapidi click di mouse.
+
+I grandi broadcaster televisivi come SKY o la BBC hanno contemporaneamente in onda decine e decine di canali TV e spesso i contenuti multimediali sono condivisi tra' gli stessi, per non parlare delle insersioni pubblicitarie.
+Per gestire il tutto sarebbe impensabile replicare la "normale" catena produttiva di una singola emittente per tutte le N emittenti del gruppo, ma alcuni (pochi) addetti, sono demandati alla programmazioni delle playlist dell'intero gruppo multimediale e altri alla programmazione delle campagne pubblicitarie.
+
+Obiettivo principale per ora sara' quella di abilitare l'INGESTING dei programmi(film, documentari, serie ...) ed il loro SCHEDULING anche annuale.
+Inoltre si prevede di abilitare in tempi brevi una gestione embrionale della PROGRAMMAZIONE PUBBLICITARIA e ovviamente il modulo di PLAYBACK per i singoli canali.
+
+todo...
+- Creazione automatica dei registri obbligatori di legge
+- interfacciamento con i programmi di fatturazione (gestionale open?)
+- Gestione della grafica in sovraimpressione, ovvero i loghi (decklink?)
+
+
+[ENGLISH] --- edit request
+This is the very initial core of a smart and simple MAM (Media Asset Management) application (very web oriented) to help management an playout of complex television archtecture.
+
+Do you think Sky or Mediaset or BBC use undreds of people for every channel they broadcast? Now you could manage lot of channel playlist 
