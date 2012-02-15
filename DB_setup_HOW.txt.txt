@@ -1,0 +1,24 @@
+installato python 2.7 (da 2.5 in su e' OK ... non il ramo 3)
+installato mysql community con utente root e pass adeguata
+installato MySQL for python con apt o PIP o easyinstall oppure con il binario windows preso da codegood.com
+
+connesso al db server con:
+	mysql --user=root mysql -p (e poi immettere la password decisa in fase di installazione)
+ora creo l'utente del database per il motore django (e non solo) con:
+	CREATE USER 'OTVAdbusers' IDENTIFIED BY 'OTVApassword';
+creo il database di default per il progetto OTVA con:
+	create database OTVAdb;
+do i permesi di connessione al server di database all'utente con la sua password con:
+	grant usage on OTVAdb.* to OTVAdbuser@localhost identified by 'OTVAdbpassword';
+ora assegno tutti i privilegi dell'itente OTVAdbuser al suo database (OTVAdb) con:
+	 grant all privileges on OTVAdb.* to OTVAdbuser@localhost;
+
+
+ho creato una nuova applicazione auth (per l'autenticazione degli utenti) nella cartella OTVA_Server con il comando:
+	manage.py startapp auth
+e ho sincronizzato i database con:
+	manage.py syncdb
+N.B.: modulo di autenticazione ha superuser=root con password=root (cambiare in fase di installazione)
+
+per ora ho seguito questo tutorial per fare una banale pagina di login: http://solutoire.com/2009/02/26/django-series-1-a-custom-login-page/
+
