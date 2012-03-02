@@ -11,16 +11,23 @@ Obiettivo principale per ora sara' quella di abilitare l'INGESTING dei programmi
 Inoltre si prevede di abilitare in tempi brevi una gestione embrionale della PROGRAMMAZIONE PUBBLICITARIA e ovviamente il modulo di PLAYBACK per i singoli canali.
 
 indispensabili:
-- Django 1.3+
 - Python 2.7+
 - Mysql 5.0+ (pass di root di default=otvaroot)
-- python-mysql (per windows scaricabile da www.codegood.com)
+ ---- librerie di sviluppo -----
+- Pip installer (wget https://raw.github.com/pypa/pip/master/contrib/get-pip.py poi sudo python get-pip.py)
+- librerie di connessione python ai db: sudo apt-get build-dep python-mysqldb
+- python-mysql (per windows scaricabile da www.codegood.com sotto linux sudo pip install MySQL-python eventualmente aggiungere --upgrade)
+- Django 1.3+ (sudo pip install django oppure pip install --upgrade django)
 
+<FATTO>  (done ....)
+- playback di una lista di file (xml) su server di playback remoto con riorganizzazione dinamica della scaletta utilizzando melted (server) e rugen (client)
+- individuata la struttura del file XML che contiene il nome del file, il nome del logo e come devono essere posizionati
+- inidividuata la direttiva da passare al file di configurazione del server per andare in full screen via hdmi
 
 todo...
 - Creazione automatica dei registri obbligatori di legge
 - interfacciamento con i programmi di fatturazione (gestionale open?)
-- Gestione della grafica in sovraimpressione, ovvero i loghi (decklink?)
+- gestione del video in ingresso da sorgente live (decklink o firewire?)
 - interfaciamento con EPG (electronic program guide) della AVALPA (cinecast)
 
 [ENGLISH] --- edit request
