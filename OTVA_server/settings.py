@@ -46,7 +46,12 @@ USE_L10N = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = ''
+
+import os.path
+
+MEDIA_ROOT = (
+    os.path.join(os.path.dirname(__file__), 'media').replace('\\','/')
+)
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
@@ -104,11 +109,17 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'OTVA_server.urls'
 
-TEMPLATE_DIRS = (
+#TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    "C:/Users/allegfede/OTVA/OTVA/OTVA_server/templates"
+    #"C:/Users/allegfede/OTVA/OTVA/OTVA_server/templates",
+#)
+
+import os.path
+
+TEMPLATE_DIRS = (
+    os.path.join(os.path.dirname(__file__), 'templates').replace('\\','/'),
 )
 
 INSTALLED_APPS = (
@@ -122,6 +133,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+	'OTVA_server.ingesting',
 )
 
 # A sample logging configuration. The only tangible logging

@@ -5,6 +5,8 @@ from django.conf.urls.defaults import *
 from django.contrib import admin
 admin.autodiscover()
 
+from OTVA_server import views
+
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'OTVA_server.views.home', name='home'),
@@ -16,4 +18,14 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
     # (r'^login/', include('auth.views.login_user')),
+	(r'^$', views.my_homepage_view),
+    (r'^hello/$', views.hello),
+    (r'^time/$',  views.current_datetime),
 )
+
+#from OTVA_server.views import my_homepage_view, hello, current_datetime
+#urlpatterns = patterns('',
+#    ('^$', my_homepage_view),
+#    ('^hello/$', hello),
+#    ('^time/$', current_datetime),
+#)
