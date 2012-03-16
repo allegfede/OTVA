@@ -5,7 +5,7 @@ installato MySQL for python con apt o PIP o easyinstall oppure con il binario wi
 connesso al db server con:
 	mysql --user=root mysql -p (e poi immettere la password decisa in fase di installazione)
 ora creo l'utente del database per il motore django (e non solo) con:
-	CREATE USER 'OTVAdbuser' IDENTIFIED BY 'OTVApassword';
+	CREATE USER 'OTVAdbuser' IDENTIFIED BY 'OTVAdbpassword';
 creo il database di default per il progetto OTVA con:
 	create database OTVAdb;
 do i permesi di connessione al server di database all'utente con la sua password con:

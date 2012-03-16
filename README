@@ -30,6 +30,9 @@ todo...
 - gestione del video in ingresso da sorgente live (decklink o firewire?)
 - interfaciamento con EPG (electronic program guide) della AVALPA (cinecast)
 
+
+PS: leggere il DH_Howto per settare opportunamente il database mysql (o altro)
+
 [ENGLISH] --- edit request
 This is the very initial core of a smart and simple MAM (Media Asset Management) application (very web oriented) to help management an playout of complex television archtecture.
 

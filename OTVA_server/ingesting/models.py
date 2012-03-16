@@ -28,19 +28,34 @@ class Program(models.Model):
     formato = models.CharField(max_length=50)
     classificazione_registro = models.CharField(max_length=50)
     def __unicode__(self):
-        return self.name
+        return u"%s, %s" % (self.name, self.serie)
 class Episode(models.Model):
     program = models.ForeignKey(Program, blank=True, null=True)
     name = models.CharField(max_length=50)
     created = models.DateTimeField(auto_now_add=True)
-    serie = models.IntegerField(blank=True, null=True)
+    episode_number = models.IntegerField(blank=True, null=True)
     lenght = models.CharField(max_length=50)
     formato = models.CharField(max_length=50)
     break_point_list = models.CharField(max_length=50)
+    tags = models.CharField(max_length=50)
     file = models.FileField(upload_to='file')
-    logo_special = models.ForeignKey(Channel, blank=True, null=True)
+
+    #logo_special = models.ForeignKey(Channel, blank=True, null=True)
+    logo_special_img = models.ImageField('Logo Image', upload_to='img/logo', blank=True, null=True)
+    logo_valign = models.CharField(max_length=1, choices=(
+        ('t', 'Top'),
+        ('c', 'Center'),
+        ('b', 'Bottom'),
+    ))
+    logo_halign = models.CharField(max_length=1, choices=(
+        ('l', 'Left'),
+        ('c', 'Center'),
+        ('r', 'Right'),
+    ))
+    logo_size = models.IntegerField(default=100)
+
     def __unicode__(self):
-        return u"%s, %s %s" % (self.program, self.serie, self.name) # Edit in admin.py
+        return self.name # Edit in admin.py
 class Playback(models.Model):
     channel = models.ForeignKey(Channel)
     server_ip = models.IPAddressField(default='127.0.0.1')
