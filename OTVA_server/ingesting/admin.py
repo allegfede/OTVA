@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from OTVA_server.ingesting.models import *
+from OTVA_server.ingesting.models import Playback, Channel, Program, Episode
 class EpisodeOption(admin.ModelAdmin):
     list_display = ('program', 'episode_number', 'name', 'lenght', 'created')
 

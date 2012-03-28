@@ -16,6 +16,8 @@ class Channel(models.Model):
         ('r', 'Right'),
     ))
     logo_size = models.IntegerField(default=100)
+    class Meta:
+        verbose_name_plural = "2. Channels"
     def __unicode__(self): 
         return self.name
 class Program(models.Model):
@@ -27,6 +29,8 @@ class Program(models.Model):
     replicabile = models.BooleanField(default=False)
     formato = models.CharField(max_length=50)
     classificazione_registro = models.CharField(max_length=50)
+    class Meta:
+        verbose_name_plural = "3. Programs"
     def __unicode__(self):
         return u"%s, %s" % (self.name, self.serie)
 class Episode(models.Model):
@@ -53,7 +57,8 @@ class Episode(models.Model):
         ('r', 'Right'),
     ))
     logo_size = models.IntegerField(default=100)
-
+    class Meta:
+        verbose_name_plural = "4. Episodes"
     def __unicode__(self):
         return self.name # Edit in admin.py
 class Playback(models.Model):
@@ -68,5 +73,7 @@ class Playback(models.Model):
         ('paused', 'Paused'),
         ('fault', 'Fault'),
     ))
+    class Meta:
+        verbose_name_plural = "1. Playbacks"
     def __unicode__(self):
         return u"%s - %s" % (self.channel, self.current_state) 
