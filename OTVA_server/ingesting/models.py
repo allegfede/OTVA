@@ -2,7 +2,7 @@ from django.db import models
 
 class Channel(models.Model):
     name = models.CharField(max_length=50)
-    tv_number = models.IntegerField(blank=True, null=True)
+    tv_number = models.IntegerField("LCN",blank=True, null=True)
     #logo_img = models.FilePathField("Logo Image", path='media/img/logo', recursive=False)
     logo_img = models.ImageField('Logo Image', upload_to='img/logo')
     logo_valign = models.CharField(max_length=1, choices=(
@@ -17,7 +17,7 @@ class Channel(models.Model):
     ))
     logo_size = models.IntegerField(default=100)
     class Meta:
-        verbose_name_plural = "2. Channels"
+        verbose_name_plural = "1. Channels"
     def __unicode__(self): 
         return self.name
 class Program(models.Model):
@@ -74,6 +74,38 @@ class Playback(models.Model):
         ('fault', 'Fault'),
     ))
     class Meta:
-        verbose_name_plural = "1. Playbacks"
+        verbose_name_plural = "2. Playbacks"
     def __unicode__(self):
-        return u"%s - %s" % (self.channel, self.current_state) 
+        return u"%s - %s" % (self.channel, self.current_state)
+class Agente(models.Model):
+    nome = models.CharField(max_length=50)
+    cognome = models.CharField(max_length=50)
+    citta = models.CharField(max_length=50,blank=True, null=True)
+    cellulare = models.CharField(max_length=50)
+    telefono = models.CharField(max_length=50,blank=True, null=True)
+    email = models.CharField(max_length=50)
+    note = models.CharField(max_length=50,blank=True, null=True)
+	created = models.DateTimeField(auto_now_add=True)
+    class Meta:
+        verbose_name_plural = "5. Agenti"
+    def __unicode__(self):
+        return u"%s %s" % (self.nome, self.cognome)
+class Cliente(models.Model):
+    ragione_sociale = models.CharField(max_length=50)
+    codife_fiscale = models.CharField(max_length=50)
+    partita_iva = models.CharField(max_length=50)
+    via = models.CharField(max_length=50)
+    citta = models.CharField(max_length=50)
+    provincia = models.CharField(max_length=50)
+    cap = models.CharField(max_length=50)
+    contatto_commerciale = models.CharField(max_length=50)
+    agente = models.ForeignKey(Agente)
+    telefono = models.CharField(max_length=50)
+    cellulare = models.CharField(max_length=50)
+    email = models.CharField(max_length=50)
+    note = models.CharField(max_length=50,blank=True, null=True)
+	created = models.DateTimeField(auto_now_add=True)
+    class Meta:
+        verbose_name_plural = "6. Clienti"
+    def __unicode__(self):
+        return self.ragione_sociale
