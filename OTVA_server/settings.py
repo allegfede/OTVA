@@ -134,6 +134,7 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 	'OTVA_server.ingesting',
+    'ajax_filtered_fields',
 )
 
 # A sample logging configuration. The only tangible logging
