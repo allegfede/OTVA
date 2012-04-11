@@ -41,16 +41,18 @@ class ContrattoOption(admin.ModelAdmin):
     list_display = ('codice_contratto', 'cliente', 'agente', 'data', 'servizi_richiesti')
     search_fields = ('codice_contratto', 'cliente')
 
+class PlaylistOption(admin.ModelAdmin):
+    list_display = ('name',)
+    form = PlaylistForm
+    #search_fields = ('programmi',)
+    #list_filter = ('programmi',)
+
 class PlaybackOption(admin.ModelAdmin):
-    list_display = ('channel', 'current_state', 'server_ip', 'server_port')
+    list_display = ('channel', 'current_state', 'playlists', 'server_ip', 'server_port')
+    form = PlaybackForm
     search_fields = ('channel',)
     list_filter = ('current_state', 'server_ip',)
 
-
-class PlaylistOption(admin.ModelAdmin):
-    list_display = ('name',)
-    #search_fields = ('programmi',)
-    #list_filter = ('programmi',)
 
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)

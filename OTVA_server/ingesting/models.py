@@ -82,7 +82,7 @@ class Episode(models.Model):
     class Meta:
         verbose_name_plural = "04. Ingesting -> Episodes"
     def __unicode__(self):
-        return self.name # Edit in admin.py
+        return u"%s > %s" % (self.program, self.name)
 
 class Agente(models.Model):
     nome = models.CharField(max_length=50)
@@ -163,7 +163,10 @@ class Playback(models.Model):
         ('paused', 'Paused'),
         ('fault', 'Fault'),
     ))
+    playlist = models.ManyToManyField(Playlist)
     class Meta:
         verbose_name_plural = "10. Scheduling -> Playbacks"
+    def playlists(self):
+        return ', '.join(str(x) for x in self.playlist.all())
     def __unicode__(self):
-        return u"%s - %s" % (self.channel, self.current_state)
+        return u"%s - %s - %s" % (self.channel, self.current_state, ', '.join(str(x) for x in self.playlist.all()))
