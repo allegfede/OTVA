@@ -47,7 +47,13 @@ class Program(models.Model):
         ('4:3','4:3'),
         ('16:9','16:9'),
     ))
-    classificazione_registro = models.CharField(max_length=50)
+    #classificazione_registro = models.CharField(max_length=50)
+    classificazione_registro = models.CharField(max_length=50, choices=(
+        ('1a - Telegiornale', '1a - Telegiornale'),
+        ('1b - Telegiornale sportivo', '1b - Telegiornale sportivo'),
+        ('1c - Servizi teletext', '1c - Servizi teletext'),
+        ('2a - Telequiz', '2a - Telequiz'),
+    ))
     class Meta:
         verbose_name_plural = "03. Ingesting -> Programs"
     def __unicode__(self):
@@ -151,11 +157,17 @@ class Contratto(models.Model):
 class Playlist(models.Model):
     name = models.CharField(max_length=50)
     programmi = models.ManyToManyField(Episode)
+    date = models.DateField(help_text="Please use the following format: <em>YYYY-MM-DD</em>.")
+    start = models.TimeField('Start')
     created = models.DateTimeField(auto_now_add=True)
     class Meta:
         verbose_name_plural = "09. Scheduling -> Playlists"
     def __unicode__(self):
-        return self.name
+        return self.start
+    def programma(self):
+        return ', '.join(str(x) for x in self.programmi.all())
+    def __unicode__(self):
+        return u"%s - %s - %s" % (self.name, self.start, ', '.join(str(x) for x in self.programmi.all()))
 
 class Playback(models.Model):
     channel = models.ForeignKey(Channel)

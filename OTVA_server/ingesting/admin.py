@@ -42,10 +42,10 @@ class ContrattoOption(admin.ModelAdmin):
     search_fields = ('codice_contratto', 'cliente')
 
 class PlaylistOption(admin.ModelAdmin):
-    list_display = ('name',)
+    list_display = ('name','date','start','programma',)
     form = PlaylistForm
     #search_fields = ('programmi',)
-    #list_filter = ('programmi',)
+    list_filter = ('date','start',)
 
 class PlaybackOption(admin.ModelAdmin):
     list_display = ('channel', 'current_state', 'playlists', 'server_ip', 'server_port')
