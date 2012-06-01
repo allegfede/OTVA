@@ -32,7 +32,7 @@ class Channel(models.Model):
     ))
     logo_size = models.IntegerField(default=100)
     class Meta:
-        verbose_name_plural = "02. Ingesting -> Channels"
+        verbose_name_plural = "02. Admin -> Channels"
     def __unicode__(self): 
         return self.name
 
@@ -66,6 +66,12 @@ class Episode(models.Model):
     break_point_list = models.CharField(max_length=50)
     tags = models.CharField(max_length=50)
     file = models.FileField(upload_to='file')
+    #file = models.FileField(upload_to='program/season/name.avi')
+    content_rating = models.CharField('Childhood Protection', max_length=10, blank=True, choices=(
+        ('green', 'Green'),
+        ('yellow', 'Yellow'),
+        ('red', 'Red'),
+    ))
     #logo_special = models.ForeignKey(Channel, blank=True, null=True)
     logo_special_img = models.ImageField('Logo Image', upload_to='img/logo', blank=True, null=True)
     logo_valign = models.CharField(max_length=1, blank=True, choices=(

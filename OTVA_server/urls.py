@@ -7,6 +7,7 @@ admin.autodiscover()
 
 from OTVA_server import views
 
+
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'OTVA_server.views.home', name='home'),
@@ -18,9 +19,10 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
     # (r'^login/', include('auth.views.login_user')),
-	(r'^$', views.my_homepage_view),
+	#(r'^$', views.my_homepage_view),
     (r'^hello/$', views.hello),
     (r'^time/$',  views.current_datetime),
+    url(r'^$', include('OTVA_server.schedule.urls')),
 )
 
 #from OTVA_server.views import my_homepage_view, hello, current_datetime
@@ -29,3 +31,16 @@ urlpatterns = patterns('',
 #    ('^hello/$', hello),
 #    ('^time/$', current_datetime),
 #)
+
+from django.conf import settings
+
+#your URL patterns
+
+if settings.DEBUG:
+    #urlpatterns += staticfiles_urlpatterns() #this servers static files and media files.
+    #in case media is not served correctly
+    urlpatterns += patterns('',
+        url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
+            'document_root': settings.MEDIA_ROOT,
+        }),
+    )
